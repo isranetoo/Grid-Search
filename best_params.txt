@@ -1,5 +1,8 @@
+Best Recognized Number: v357k5
 Best Parameters:
-Threshold 1: 170
-Threshold 2: 130
-Sigma: 2.5
-Resize Dimensions: (3500, 1050)
+  Threshold 1: 160
+  Threshold 2: 125
+  Sigma: 1.5
+  Resize Dimensions: (3000, 900)
+Best Confidence: 0
+Best Accuracy (Number Length): 6
