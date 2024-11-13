@@ -59,8 +59,8 @@ def solve_captcha_local(image_path, th1, th2, sig, resize_dim):
 
 
 def grid_search(image_path):
-    thresholds = [(150, 120), (160, 125), (170, 130)]
-    sigmas = [1.5, 2.0, 2.5]
+    thresholds = [(150, 120), (160, 125), (170, 130),(180, 135)]
+    sigmas = [0.5,1.0 ,1.5, 2.0, 2.5,3.0,3.5]
     resize_dims = [(3000, 900), (2500, 750), (3500, 1050)]
 
     best_number = ""
@@ -71,9 +71,9 @@ def grid_search(image_path):
     for th1, th2 in thresholds:
         for sig in sigmas:
             for resize_dim in resize_dims:
-                print(f"Testing with th1={th1}, th2={th2}, sigma={sig}, resize_dim={resize_dim}")
+                print(f"testing with th1={th1}, th2={th2}, sigma={sig}, resize_dim={resize_dim}")
                 number, confidence = solve_captcha_local(image_path, th1, th2, sig, resize_dim)
-                print(f"Result: {number} with confidence {confidence}")
+                print(f"result: {number} with confidence {confidence}")
 
                 if len(number) == 6 and confidence > best_confidence:
                     best_confidence = confidence
@@ -92,14 +92,14 @@ def save_best_params_to_file(best_number, best_params, best_confidence, best_acc
     best_params_file = os.path.join(F_PATH, "best_params.txt")
     
     with open(best_params_file, "w") as file:
-        file.write(f"Best Recognized Number: {best_number}\n")
-        file.write(f"Best Parameters:\n")
-        file.write(f"  Threshold 1: {best_params[0]}\n")
-        file.write(f"  Threshold 2: {best_params[1]}\n")
-        file.write(f"  Sigma: {best_params[2]}\n")
-        file.write(f"  Resize Dimensions: {best_params[3]}\n")
-        file.write(f"Best Confidence: {best_confidence}\n")
-        file.write(f"Best Accuracy (Number Length): {best_accuracy}\n")
+        file.write(f"best recognized number: {best_number}\n")
+        file.write(f"best parameters:\n")
+        file.write(f"  threshold 1: {best_params[0]}\n")
+        file.write(f"  threshold 2: {best_params[1]}\n")
+        file.write(f"  sigma: {best_params[2]}\n")
+        file.write(f"  resize Dimensions: {best_params[3]}\n")
+        file.write(f"best confidence: {best_confidence}\n")
+        file.write(f"best accuracy (Number Length): {best_accuracy}\n")
 
     print(f"Best parameters and result saved to {best_params_file}")
 
