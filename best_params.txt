@@ -1,0 +1,5 @@
+Best Parameters:
+Threshold 1: 170
+Threshold 2: 130
+Sigma: 2.5
+Resize Dimensions: (3500, 1050)
